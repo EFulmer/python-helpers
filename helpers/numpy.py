@@ -1,11 +1,23 @@
 import numpy as np
 
 
-# These change_of_basis_Nd functions were made to check my work in the
-# Coursera Linear Algebra course.
+# These X_project and change_of_basis_Nd functions were made to check my
+# work in the Coursera Linear Algebra course.
 # They cold be genericized or I could just use np.linalg.solve, but I
 # was trying to understand the concept a bit better.
-def change_of_basis_2d(v: np.array, b1: np.array, b2: np.array) -> np.array:
+def scalar_project(r: np.ndarray, s: np.ndarray) -> np.float64:
+    """Project s onto r."""
+    return r.dot(s) / np.linalg.norm(r)
+
+
+def vector_project(r: np.ndarray, s: np.ndarray) -> np.array:
+    """Project s onto r."""
+    return (r.dot(s) / (np.linalg.norm(r) ** 2)) * r
+
+
+def change_of_basis_2d(
+    v: np.ndarray, b1: np.ndarray, b2: np.ndarray
+) -> np.ndarray:
     """Change v to the basis defined by b1 and b2."""
     len_b1 = np.linalg.norm(b1)
     len_b2 = np.linalg.norm(b2)
@@ -15,7 +27,7 @@ def change_of_basis_2d(v: np.array, b1: np.array, b2: np.array) -> np.array:
 
 
 def change_of_basis_3d(
-    v: np.array, b1: np.array, b2: np.array, b3: np.array
+    v: np.ndarray, b1: np.ndarray, b2: np.ndarray, b3: np.ndarray
 ) -> np.array:
     """Change v to the basis defined by b1, b2, and b3."""
     len_b1 = np.linalg.norm(b1)
@@ -28,7 +40,11 @@ def change_of_basis_3d(
 
 
 def change_of_basis_4d(
-    v: np.array, b1: np.array, b2: np.array, b3: np.array, b4: np.array
+    v: np.ndarray,
+    b1: np.ndarray,
+    b2: np.ndarray,
+    b3: np.ndarray,
+    b4: np.ndarray,
 ) -> np.array:
     """Change v to the basis defined by b1, b2, b3, and b4."""
     len_b1 = np.linalg.norm(b1)
